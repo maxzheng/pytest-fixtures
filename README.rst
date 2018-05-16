@@ -3,6 +3,12 @@ pytest-fixtures
 
 Common fixtures for pytest
 
+To use, just install it and pytest will automatically detect and load all fixtures::
+
+    pip install pytest-fixtures
+
+I suggest adding it to your test reuqirements in `tox.ini` or `setup.py`.
+
 Click Fixtures
 --------------
 
