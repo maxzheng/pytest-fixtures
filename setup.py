@@ -13,8 +13,6 @@ setuptools.setup(
 
     url='https://github.com/maxzheng/pytest-fixtures',
 
-    install_requires=open('requirements.txt').read(),
-
     license='MIT',
 
     packages=setuptools.find_packages(),
@@ -23,11 +21,12 @@ setuptools.setup(
     python_requires='>=3.6',
     setup_requires=['setuptools-git'],
 
-    # entry_points={
-    #    'console_scripts': [
-    #        'script_name = package.module:entry_callable',
-    #    ],
-    # },
+    entry_points={
+       'pytest11': [
+           'standard = fixtures',
+           'click = fixtures.click',
+       ],
+    },
 
     classifiers=[
       'Development Status :: 5 - Production/Stable',
