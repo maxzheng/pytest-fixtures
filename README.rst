@@ -9,8 +9,8 @@ To use, just install it and pytest will automatically detect and load all fixtur
 
 I suggest adding it to your test requirements in `tox.ini` or `setup.py`.
 
-Dependencies
-------------
+No Dependencies
+---------------
 
 This package does not depend on any other packages and never will. It uses standard libraries or uses run-time
 imports and therefore it is lightweight to add to any project. As for which external run-time dependency a fixture
