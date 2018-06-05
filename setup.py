@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name='pytest-fixtures',
-    version='0.0.5',
+    version='0.0.7',
 
     author='Max Zheng',
     author_email='maxzheng.os@gmail.com',
