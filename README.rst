@@ -7,7 +7,7 @@ To use, just install it and pytest will automatically detect and load all fixtur
 
     pip install pytest-fixtures
 
-I suggest adding it to your test requirements in `tox.ini` or `setup.py`.
+To install automatically, add it to your test requirements in `tox.ini` or `setup.py`.
 
 No Dependencies
 ---------------
@@ -17,10 +17,59 @@ imports and therefore it is lightweight to add to any project. As for which exte
 needs, that is documented here and shouldn't matter as you would only use the fixtures that your project already has
 dependencies on.
 
+Standard Fixtures
+-----------------
+
+Fixtures based on standard Python libraries
+
+
+test_data
+~~~~~~~~~
+
+To get path, read, and write test data in `tests/data` folder, use the `test_data` fixture.
+
+First, setup the path to test data path in `tests/conftest.py`:
+
+.. code-block:: python
+
+    from pathlib import Path
+    from fixtures import TestData
+
+    TestData.BASE_PATH = Path(__file__).parent / 'data'
+
+And then get path to data files in `tests/data` using `test_data` fixture:
+
+.. code-block:: python
+
+    def test_integration(test_data):
+        obj = MyClass(test_data.path('sample.csv'))
+
+To write out test data:
+
+.. code-block:: python
+
+    def test_integration(test_data):
+        output = run_cli()
+        test_data.write('test_integration.output', output)
+
+Then read the test data to assert:
+
+.. code-block:: python
+
+    def test_integration(test_data):
+        output = run_cli()
+        expected_output = test_data.read('test_integration.output')
+        assert expected_output == output
+
 Click Fixtures
 --------------
 
 Fixtures for Click <http://click.pocoo.org/>
+
+cli_runner
+~~~~~~~~~~
+
+To invoke, assert exit, with stdout/stderr outputs on error::
 
 .. code-block:: python
 
